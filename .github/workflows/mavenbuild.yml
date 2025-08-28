@@ -7,7 +7,7 @@ on:
     branches: [main]
 jobs:
   build:
-     runs on: self-hosted
+     runs-on: self-hosted
 
      steps:                  # (5) Steps inside the job
        - name: Checkout repository
