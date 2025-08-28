@@ -1,0 +1,29 @@
+name: Build maven
+
+on: 
+  push:
+    branches: [main]
+  pull:
+    branches: [main]
+
+jobs:
+  build:
+    runs on: self-hosted
+
+  steps:
+    name: checked repository
+    uses: actions/checkout@v3
+
+    name: Open jdk
+    uses: actions/setup-java@v3
+     with:
+          distribution: 'temurin'   # (7) Use Eclipse Temurin JDK
+          java-version: '17'        # (8) Specify Java version
+
+      - name: Build with Maven
+        run: mvn -B package --file pom.xml
+        # (9) Run Maven build in batch mode (-B) using pom.xml
+
+      - name: Run Hello program
+        run: java -cp target/hello-world-1.0-SNAPSHOT.jar Hello
+        # (10) Run compiled program from the JAR
