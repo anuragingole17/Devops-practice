@@ -5,13 +5,12 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+
 jobs:
-
-  build:
-  
-     runs-on: self-hosted
-
-     steps:                  # (5) Steps inside the job
+    build:                   # job name
+      runs-on: self-hosted    # ✅ must be indented under build
+         
+      steps:       # (5) Steps inside the job
        - name: Checkout repository
          uses: actions/checkout@v3
         # (6) This pulls your repo code into the runner VM
@@ -26,6 +25,6 @@ jobs:
          run: mvn -B package --file pom.xml
         # (9) Run Maven build in batch mode (-B) using pom.xml
 
-      - name: Run Hello program
-        run: java -cp target/hello-world-1.0-SNAPSHOT.jar Hello
+       - name: Run Hello program
+         run: java -cp target/hello-world-1.0-SNAPSHOT.jar Hello
         # (10) Run compiled program from the JAR
