@@ -1,0 +1,38 @@
+name: MY first pipeline 
+
+on: 
+
+  push:
+      branches: [ main ]
+
+  pull_request:
+       branches: [main]
+
+jobs:
+  build:
+
+    runs-on: ubunutu-latest
+     
+
+    steps:
+      - name: Checkout code   # "name" not "names"
+        uses: actions/checkout@v3
+
+      - name: Install dependencies   # spelling fixed
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build project
+        run: npm run build
+       
+
+      
+      
+      
+    
+
+
+       
+      
